@@ -26,6 +26,7 @@ alias nval='nv ~/.config/alacritty/alacritty.yml'
 alias tmatrix='tmatrix --fade --fall-speed=1.0,2.0'
 alias nvdws='cd ~/.dwm && nv config.h && suckinstall && cd -'
 alias nvsls='cd ~/.config/slstatus/ && nv config.h && suckinstall && cd -'
+
 alias bakwm="
 $S cp config.def.h -R config.def.h.bak && 
 $S cp config.h -R config.h.bak && 
