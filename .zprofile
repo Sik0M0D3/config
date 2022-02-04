@@ -1,7 +1,7 @@
 #
-# ~/.bash_profile
+# ~/.zsh_profile
 #
 
-[[ -f ~/.bashrc ]] && . ~/.bashrc
+[[ -f ~/.zshrc ]] && . ~/.zshrc
 
 exec startx
