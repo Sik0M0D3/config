@@ -9,14 +9,14 @@ colors:
     green:   '#00af17'
     yellow:  '#e0b004'
     blue:    '#0f93d1'
-    magenta: '0xc678dd'
+    magenta: '#c678dd'
     cyan:    '#05fcf4'
-    white:   '0xbbc2cf'
+    white:   '#bbc2cf'
 
   bright:
     black:   '#777777'
     green:   '#05fc26'
-    blue:    '0x51afef'
+    blue:    '#51afef'
     cyan:    '#6cfcf7'
 
   dim:
