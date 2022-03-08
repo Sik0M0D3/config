@@ -1,9 +1,13 @@
+#
 #   ~/.bashrc
+#
 
 # If  no display && actual tty == 1  run startx
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
     exec startx
 fi
+
+export PATH=$HOME/.local/bin:$PATH
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -18,7 +22,7 @@ alias rm='rm -v'
 alias wl='wc -l'
 alias mv='mv -vi'
 alias cp='cp -vi'
-alias ll='exa -lagF --group-directories-first --sort=type --colour-scale --icons'
+alias ll='exa -lagF --group-directories-first --sort=type --colour-scale'
 alias grep='grep --color=auto'
 #alias sudo='doas'
 
@@ -28,11 +32,16 @@ alias nvx='nv ~/.xinitrc'
 alias nvb='nvim ~/.bashrc'
 alias nvp='nvim ~/.profile'
 alias nvs="nv ~/.config/auto.sh"
+alias nvd="cd $D && nvim config.def.h && suc"
 alias nvc='nvim ~/.config/alacritty/colors.yml'
 alias nva='nvim ~/.config/alacritty/alacritty.yml'
-alias nvd="cd $D && nvim ~/.src/dwm/config.def.h && c-c && suk"
 
 # Others
+alias ufw="$S ufw"
+alias gfw="$S gufw"
+alias chm="$S chmod"
+alias cho="$S chown"
+alias pac="$S pacman"
 alias neo='fastfetch'
 alias suc='c-c && suk'
 alias lol='neo | lolcat'
@@ -41,10 +50,11 @@ alias sct="$S systemctl"
 alias s.b='source ~/.bashrc'
 alias apr="chown $USER:$USER"
 alias suk="$S make clean install"
+alias ift="$S iftop -i enp0s20f0u2"
 alias edg="nv /etc/default/grub && upg"
 alias c-c="$S cp config.def.h -R config.h -vi"
+alias ste='flatpak run com.valvesoftware.Steam'
 alias upg="$S grub-mkconfig -o /boot/grub/grub.cfg"
-alias steam=' flatpak  run  com.valvesoftware.Steam '
 alias bakdwm="
 $S  cp  config.def.h      -R  config.def.bak   -v  &&
 $S  cp  config.h          -R  config.h.bak     -v  &&
@@ -99,10 +109,11 @@ ex ()
     fi
 }
 
-#lol
+clear
+
+lol
 #neo
 #neofetch
 
-PS1=" \u @ \h > \w $ "
-
+PS1=" \u @ \h > [\w] $ "
 ################### EOF ##################
