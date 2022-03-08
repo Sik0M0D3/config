@@ -1,8 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 
 # Run programs with exec to kill
 #nitrogen --restore &
-#exec dwmblocks &
 #exec compton &
 #xsct 3800
 
