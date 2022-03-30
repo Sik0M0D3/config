@@ -1,119 +1,77 @@
-#
-#   ~/.bashrc
-#
+### EXPORT ###
+export PAGER='most'
+export EDITOR='nvim'
+export VISUAL='nvim'
+export HISTCONTROL=ignoreboth:erasedups
+export LESSHISTFILE="$HOME/.config/lesshst"
+#[ -d "$HOME/.local/bin" ] && PATH="$HOME/.local/bin:$PATH"
 
-# If  no display && actual tty == 1  run startx
-if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-    exec startx
-fi
-
-export PATH=$HOME/.local/bin:$PATH
-
-# If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-S='sudo'
-D="$HOME/.src/dwm"
+#Ibus settings if you need them
+#type ibus-setup in terminal to change settings and start the daemon
+#delete the hashtags of the next lines and restart
+#export GTK_IM_MODULE=ibus
+#export XMODIFIERS=@im=dbus
+#export QT_IM_MODULE=ibus
 
-# Basic
-alias XX='exit'
-alias cl='clear'
-alias rm='rm -v'
-alias wl='wc -l'
-alias mv='mv -vi'
-alias cp='cp -vi'
-alias ll='exa -lagF --group-directories-first --sort=type --colour-scale'
-alias grep='grep --color=auto'
-#alias sudo='doas'
+PS1=' \u @ [\w]
+  \$ > '
 
-# Neo Shorts
-alias nv="$S nvim"
-alias nvx='nv ~/.xinitrc'
-alias nvb='nvim ~/.bashrc'
-alias nvp='nvim ~/.profile'
-alias nvs="nv ~/.config/auto.sh"
-alias nvd="cd $D && nvim config.def.h && suc"
-alias nvc='nvim ~/.config/alacritty/colors.yml'
-alias nva='nvim ~/.config/alacritty/alacritty.yml'
+# If not running interactively, don't do anything
 
-# Others
-alias ufw="$S ufw"
-alias gfw="$S gufw"
-alias chm="$S chmod"
-alias cho="$S chown"
-alias pac="$S pacman"
-alias neo='fastfetch'
-alias suc='c-c && suk'
-alias lol='neo | lolcat'
-alias res='chmod go-rwx'
-alias sct="$S systemctl"
-alias s.b='source ~/.bashrc'
-alias apr="chown $USER:$USER"
-alias suk="$S make clean install"
-alias ift="$S iftop -i enp0s20f0u2"
-alias edg="nv /etc/default/grub && upg"
-alias c-c="$S cp config.def.h -R config.h -vi"
-alias ste='flatpak run com.valvesoftware.Steam'
-alias upg="$S grub-mkconfig -o /boot/grub/grub.cfg"
-alias bakdwm="
-$S  cp  config.def.h      -R  config.def.bak   -v  &&
-$S  cp  config.h          -R  config.h.bak     -v  &&
-$S  cp  config.mk         -R  config.mk.bak    -v  &&
-$S  cp  drw.c             -R  drw.c.bak        -v  &&
-$S  cp  drw.h             -R  drw.h.bak        -v  &&
-$S  cp  dwm.c             -R  dwm.c.bak        -v  &&
-$S  cp  dwm.1             -R  dwm.1.bak        -v  &&
-$S  cp  movestack.c       -R  movestack.c.bak  -v  &&
-$S  cp  transient.c       -R  transient.c.bak  -v  &&
-$S  cp  util.c            -R  util.c.bak       -v  &&
-$S  cp  util.h            -R  util.h.bak       -v
-"
-alias unbakdwm="
-$S  cp  config.def.h.bak  -R  config.def.h     -v  &&
-$S  cp  config.h.bak      -R  config.h         -v  &&
-$S  cp  config.mk.bak     -R  config.mk        -v  &&
-$S  cp  drw.c.bak         -R  drw.c            -v  &&
-$S  cp  drw.h.bak         -R  drw.h            -v  &&
-$S  cp  dwm.c.bak         -R  dwm.c            -v  &&
-$S  cp  dwm.1.bak         -R  dwm.1            -v  &&
-$S  cp  movestack.c.bak   -R  movestack.c      -v  &&
-$S  cp  transient.c.bak   -R  transient.c      -v  &&
-$S  cp  util.c.bak        -R  util.c           -v  &&
-$S  cp  util.h.bak        -R  util.h           -v
-"
 
-# # Usage: ex <file>
-# Stolen from arco linux config files
+#ignore upper and lowercase when TAB completion
+bind "set completion-ignore-case on"
+
+#shopt
+shopt -s autocd # change to named directory
+shopt -s cdspell # autocorrects cd misspellings
+shopt -s cmdhist # save multi-line commands in history as single line
+shopt -s dotglob
+shopt -s histappend # do not overwrite history
+shopt -s expand_aliases # expand aliases
+
+# # ex = EXtractor for all kinds of archives
+# # usage: ex <file>
 ex ()
 {
-    if [ -f $1 ] ; then
-        case $1 in
-            *.tar.bz2)   tar xjf    $1  ;;
-            *.tar.gz)    tar xzf    $1  ;;
-            *.bz2)       bunzip2    $1  ;;
-            *.rar)       unrar x    $1  ;;
-            *.gz)        gunzip     $1  ;;
-            *.tar)       tar xf     $1  ;;
-            *.tbz2)      tar xjf    $1  ;;
-            *.tgz)       tar xzf    $1  ;;
-            *.zip)       unzip      $1  ;;
-            *.Z)         uncompress $1  ;;
-            *.7z)        7z x       $1  ;;
-            *.deb)       ar x       $1  ;;
-            *.tar.xz)    tar xf     $1  ;;
-            *.tar.zst)   tar xf     $1  ;;
-            *)           echo "'$1' cannot be extracted via ex()" ;;
-        esac
-    else
-        echo "'$1' is not a valid file"
-    fi
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjf $1   ;;
+      *.tar.gz)    tar xzf $1   ;;
+      *.bz2)       bunzip2 $1   ;;
+      *.rar)       unrar x $1   ;;
+      *.gz)        gunzip $1    ;;
+      *.tar)       tar xf $1    ;;
+      *.tbz2)      tar xjf $1   ;;
+      *.tgz)       tar xzf $1   ;;
+      *.zip)       unzip $1     ;;
+      *.Z)         uncompress $1;;
+      *.7z)        7z x $1      ;;
+      *.deb)       ar x $1      ;;
+      *.tar.xz)    tar xf $1    ;;
+      *.tar.zst)   tar xf $1    ;;
+      *)           echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
 }
 
-clear
+[ -f ~/.config/.aliases ] && . ~/.config/.aliases
 
-lol
-#neo
-#neofetch
-
-PS1=" \u @ \h > [\w] $ "
-################### EOF ##################
+# reporting tools - install when not installed
+#alsi
+#fetch
+#hfetch
+#sfetch
+#ufetch
+#ufetch-arco
+#pfetch
+#sysinfo
+#sysinfo-retro
+neofetch
+#cpufetch
+#paleofetch
+#screenfetch
