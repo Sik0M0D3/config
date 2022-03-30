@@ -1,0 +1,14 @@
+#!/bin/sh
+# This script goes into ~/.local/bin
+
+# Setting dwm as current Desktop for env
+export XDG_SESSION_DESKTOP='dwm'
+export XDG_CURRENT_DESKTOP='dwm'
+
+# Keyboard Layout in a String for Whatever
+sysinfo=$(uname -rs ; setxkbmap -v | awk -F "+" '/symbols/ {print $2}' ; date '+ %a %d %b %Y')
+
+# Run One-Shot applications that don't need to be KILLed here
+xwallpaper --zoom /usr/share/backgrounds/arcolinux/arco-wallpaper.jpg
+gammastep -x -m randr && gammastep -O 5000 -m randr
+xsetroot -name $sysinfo
