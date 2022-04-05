@@ -3,32 +3,44 @@
 #################################################################
 
 #Rofi
-super + shift + p
-    rofi -show drun
+#super + shift + p
+#    rofi -show drun
 
 #Rofi theme selector
-ctrl + alt + p
-    rofi-theme-selector
+#ctrl + alt + p
+#    rofi-theme-selector
 
 #Browser
 super + w
     librewolf
 
+#Waldl
+super + shift + w
+    waldl
+
 #Htop
 super + h
     st -e htop
 
-#arcolinux-logout
-super + x
-    arcolinux-logout
+#Btop
+super + b
+    alacritty -e btop
 
 #Xkill
 super + Escape
     xkill
 
-#reload sxhkd
+#Reload sxhkd
 super + shift + s
 	pkill -USR1 -x sxhkd
+
+#Toggle picom
+ctrl + alt + p
+    killall picom || picom
+
+#Toggle slstatus
+ctrl + alt + s
+    killall slstatus || slstatus
 
 #################################################################
 #     MULTIMEDIA KEYS
@@ -78,13 +90,3 @@ super + shift + s
 #Brightness down
 #XF86MonBrightnessDown
 #    xbacklight -dec 10
-
-#################################################################
-#################################################################
-##################   DESKTOP SPECIFIC    ########################
-#################################################################
-#################################################################
-
-#Picom Toggle
-ctrl + alt + o
-    ~/.config/picom-toggle
