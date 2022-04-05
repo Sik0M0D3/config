@@ -1,4 +1,5 @@
 #!/bin/sh
+# This i keep for the program names the exports and the run function.
 
 export XDG_SESSION_DESKTOP='dwm'
 export XDG_CURRENT_DESKTOP='dwm'
