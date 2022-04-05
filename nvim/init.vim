@@ -1,3 +1,4 @@
+
 syntax on
 set hidden
 set smarttab
