@@ -9,4 +9,4 @@
 gammastep -x -m randr && gammastep -O 5000 -m randr
 
 # Set wallpaper with xwallpaper tool
-x-wset --zoom ~/Pix/
+x-wset --zoom ~/Pix/somepicture
