@@ -1,10 +1,10 @@
 ### EXPORT ###
-export PAGER='most'
-export EDITOR='nvim'
-export VISUAL='nvim'
+export EDITOR=nvim
+export VISUAL=nvim
+export TERMINAL=st
+export XCURSOR_THEME=bloom
 export HISTCONTROL=ignoreboth:erasedups
 export LESSHISTFILE="$HOME/.config/lesshst"
-#[ -d "$HOME/.local/bin" ] && PATH="$HOME/.local/bin:$PATH"
 
 [[ $- != *i* ]] && return
 
@@ -15,8 +15,8 @@ export LESSHISTFILE="$HOME/.config/lesshst"
 #export XMODIFIERS=@im=dbus
 #export QT_IM_MODULE=ibus
 
-PS1=' \u @ [\w]
-  \$ > '
+PS1=' \u @ \w
+ \$ > '
 
 # If not running interactively, don't do anything
 
