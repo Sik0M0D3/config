@@ -22,26 +22,33 @@ alias nvx='nv ~/.xinitrc'
 alias nbp='nv ~/.bash_profile'
 alias nva='nv ~/.config/alacritty'
 alias nvs='nv ~/.local/bin/autostart'
+alias nvd='cd ~/.local/src/dwm/ && nvim config.def.h && suc'
 
+alias bat='bat -f'
 alias dsh="$S du -sh"
 alias suc='c-c && suk'
 alias p-1='patch -p1 <'
 alias chm="$S chmod -c"
 alias cho="$S chown -c"
 alias res='chmod go-rwx'
+alias man='PAGER=most man'
 alias own="cho $USER:$USER"
 alias s.b='source ~/.bashrc'
 alias suk="$S make clean install"
 alias c-c="$S cp config.def.h -R config.h -vi"
 
 alias grep='grep --color=auto'
-
 alias chmod='chmod -c'
 alias chown='chown -c'
 alias mkdir='mkdir -vp'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias nv.al="$EDITOR ~/.config/.aliases"
+
+alias seepix='sxiv ~/Pix &'
+alias x-wset='xwallpaper --zoom'
+alias visudo="$S EDITOR=nvim visudo"
+alias seebacks='sxiv /usr/share/backgrounds/* &'
 
 #readable output
 alias df='df -h'
