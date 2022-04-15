@@ -1,5 +1,4 @@
 git
-paru-bin
 alacritty
 archlinux-wallpaper
 awesome-terminal-fonts
@@ -10,16 +9,12 @@ dash
 deepin-icon-theme
 dkms
 exa
+flatpak
 gammastep
 htop
 intel-ucode
 jq
-librewolf-bin
 lxappearance
-nvidia
-nvidia-dkms
-nvidia-utils
-nvidia-settings
 sweet-gtk-theme
 sxhkd
 sxiv
@@ -30,7 +25,6 @@ pipewire-docs
 pipewire-jack
 pipewire-pulse
 pulsemixer
-ufw
 volumeicon
 wget
 wireplumber
