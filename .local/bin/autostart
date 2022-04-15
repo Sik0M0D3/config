@@ -1,8 +1,8 @@
 #!/bin/sh
 # This script is to run One-Shot programs with no persistance.
 
-# Clear old screen temperature and set to 5000 the actual.
-gammastep -x -m randr && gammastep -O 5000 -m randr
+# Clear old screen temperature and set new to 4000.
+gammastep -x -m randr && gammastep -O 4000 -m randr
 
 # Set wallpaper with xwallpaper tool.
-x-wset --zoom ~/Pix/"Some Picture Here"
+xwallpaper --zoom ~/Pix/47o8ko.jpg
