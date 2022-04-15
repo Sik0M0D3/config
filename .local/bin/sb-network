@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# This is 2 scripts merged into 1, original ones are in Luke Smith's github.
 # Show wifi 直 and percent strength or 睊 if none.
 # Show  if connected to ethernet or  if none.
 # Show  if a vpn connection is active
