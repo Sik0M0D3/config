@@ -1,0 +1,39 @@
+#!/bin/sh
+. ~/.local/bin/bar_themes/catppuccin
+
+case $BLOCK_BUTTON in
+    1) setsid -f st -e pulsemixer ;;
+    2) pamixer -t && $( (pidof dunst) && notify-vol || exit) ;;
+    3) notify-send "墳  Volume module
+- Scroll to change volume.
+- Left Click to open Mixer.
+- Wheel Click to mute volume.
+- Right Click display this message.
+- Left Click + Shift to Edit this Module.
+- Right Click + Shift to open Qpwgraph." ;;
+    4) pamixer -i 1 ;;
+    5) pamixer -d 1 ;;
+    6) st -e nvim "$0" ;;
+esac
+
+[ $(pamixer --get-mute) = true ] && echo ' 󰖁 mute ' && exit
+
+vol="$(pamixer --get-volume)"
+
+if [ "$vol" -eq 100 ]; then
+  icon="^c$red^󰕾 "
+elif [ "$vol" -gt "74" ]; then
+  icon="^c$orange^󰕾 ^d^0^c$orange^"
+elif [ "$vol" -gt "60" ]; then
+  icon="^c$yellow^󰕾 ^d^0^c$yellow^"
+elif [ "$vol" -gt "50" ]; then
+  icon="^c$green^󰕾 ^d^0^c$green^"
+elif [ "$vol" -ge "10" ]; then
+  icon="^c$green^󰖀 ^d^0^c$green^"
+elif [ "$vol" -gt "0" ]; then
+  icon="^c$green^󰕿 ^d^00^c$green^"
+else
+  echo ' 󰝟 000% ' && $( (pidof dunst) && notify-vol || exit) && exit
+fi
+
+printf " ^c$gray2^$icon$vol^d^%% \n"
