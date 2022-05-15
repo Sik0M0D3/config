@@ -1,0 +1,37 @@
+#!/bin/sh
+# This is 2 scripts merged into 1, original ones are in Luke Smith's github.
+. ~/.local/bin/bar_themes/catppuccin
+
+case $BLOCK_BUTTON in
+    1) setsid -f st -e bmon; kill -38 $(pidof dwmblocks) ;;
+    2) setsid -f st -e nmtui; kill -38 $(pidof dwmblocks) ;;
+    3) notify-send "爵 -------- Nerwork Module --------
+- Left Click to view Network Traffic.
+- Wheel Click to Manage Connetions.
+- Right Click to Show This Message.
+- Left Click + Shift to Edit this Module.
+    Download Speed/RX       󰜮
+    Upload Speed/TX         󰜷
+    Ethernet Connected      󰖟
+    Ethernet Disconnected   󰅙
+    VPN is Active           󰒃" ;;
+    6) setsid -f st -e nvim "$0" ;;
+esac
+
+update() {
+  sum=0
+  for arg; do
+    read -r i < "$arg"
+    sum=$(( sum + i ))
+  done
+  cache=${XDG_CACHE_HOME:-$HOME/.cache}/${1##*/}
+  [ -f "$cache" ] && read -r old < "$cache" || old=0
+  printf %d\\n "$sum" > "$cache"
+  printf %d\\n $(( sum - old ))
+}
+
+rx=$(update /sys/class/net/[ew]*/statistics/rx_bytes)
+tx=$(update /sys/class/net/[ew]*/statistics/tx_bytes)
+
+printf "^c$blue^󰶡 %4sBs^d^ ^c$red^󰶣 %4sBs^d^ %s%s%s \n" $(numfmt --to=iec $rx $tx) "$(sed "s/down/^c$red^󰅙^d^/;s/up/^c$green^󰖟^d^/" /sys/class/net/e*/operstate 2>/dev/null)" "$(sed "s/.*/^c$yellow^󰒃^d^/" /sys/class/net/tun*/operstate 2>/dev/null)"
+#printf "^c#000000^^b#a6e22e^󰶡 %4sBs ^d^ ^c#000000^^b#f92672^󰶣 %4sBs ^d^ %s%s%s \n" $(numfmt --to=iec $rx $tx) "$(sed "s/down/^c#aa2222^󰅙^d^/;s/up/^c#30cc64^󰖟^d^/" /sys/class/net/e*/operstate 2>/dev/null)" "$(sed "s/.*/^c#ffd343^󰒃^d^/" /sys/class/net/tun*/operstate 2>/dev/null)"
