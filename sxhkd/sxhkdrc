@@ -11,52 +11,48 @@
 #    rofi-theme-selector
 
 #Browser
-super + w
-    librewolf
+#super + w
+#    io.gitlab.librewolf-community
 
 #Waldl
-super + shift + w
+ctrl + alt + w
     waldl
 
 #Htop
 super + h
     st -e htop
 
-#Btop
-super + b
-    alacritty -e btop
+#Reload Keybindings daemon (sxhkd)
+ctrl + alt + k
+    pkill -USR1 -x sxhkd
 
-#Xkill
-super + Escape
-    xkill
+#Toggle Notification daemon (dunst)
+ctrl + alt + n
+    kill $(pidof dunst) || dunst &
 
-#Reload sxhkd
-super + shift + s
-	pkill -USR1 -x sxhkd
+#Toggle Compositor (picom)
+ctrl + alt + c
+    toggle-picom
 
-#Toggle picom
-ctrl + alt + p
-    killall picom || picom
-
-#Toggle slstatus
+#Toggle Statusbar (dwmblocks)
 ctrl + alt + s
-    killall slstatus || slstatus
+    toggle-dwmblocks
 
 #################################################################
 #     MULTIMEDIA KEYS
 #################################################################
 
 #Raises volume
-#XF86AudioRaiseVolume
-#    amixer set Master 5%+
+XF86AudioRaiseVolume
+    pamixer -i 5 && kill -44 $(pidof dwmblocks) && $( (pidof dunst) && notify-vol || exit 0)
 
 #Lowers volume
-#XF86AudioLowerVolume
-#    amixer set Master 5%-
+XF86AudioLowerVolume
+    pamixer -d 5 && kill -44 $(pidof dwmblocks) && $( (pidof dunst) && notify-vol || exit 0)
 
 #Mute
-#XF86AudioMute
-#    amixer -D pulse set Master 1+ toggle
+XF86AudioMute
+    pamixer -t && kill -44 $(pidof dwmblocks) && $( (pidof dunst) && notify-vol || exit 0)
 
 #Playerctl works for Pragha, Spotify and others
 #Delete the line for playerctl if you want to use mpc
