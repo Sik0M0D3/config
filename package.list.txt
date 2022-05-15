@@ -15,22 +15,31 @@ htop
 intel-ucode
 jq
 lxappearance
+qpwgraph
+speedcrunch
 sweet-gtk-theme
 sxhkd
 sxiv
 terminus-font
+picom-ibhagwan-git
 pipewire
 pipewire-alsa
 pipewire-docs
 pipewire-jack
 pipewire-pulse
 pulsemixer
+ttf-iosevka-nerd 2.1.0-2
+ttf-jetbrains-mono 2.242-2
+ttf-material-design-icons-git v6.6.96.r2.g0fe6681-1
+ttf-nerd-fonts-symbols-mono
+ufw
 volumeicon
 wget
 wireplumber
 xcolor
 xfce4-notifyd
 xorg-mkfontscale
+xorg-xinit
 xorg-xprop
 xorg-xrandr
 xorg-xsetroot
