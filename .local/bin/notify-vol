@@ -1,0 +1,23 @@
+#!/bin/sh
+
+(pidof dunst) || exit 0
+
+# Arbitrary but unique message tag
+msgTag="myvolume"
+
+# Change the volume using alsa(might differ if you use pulseaudio)
+#amixer -c 0 set Master "$@" > /dev/null
+
+# Query amixer for the current volume and whether or not the speaker is muted
+vol="$(pamixer --get-volume)"
+mute="$(pamixer --get-mute)"
+if [ "$vol" = "0" ]; then
+  dunstify -a "changeVolume" -u low -i audio-volume-muted -h string:x-dunst-stack-tag:$msgTag "Volume Silent" -t 750
+elif  [ $mute = "true" ]; then
+  # Show the sound muted notification
+  dunstify -a "changeVolume" -u low -i audio-volume-muted -h string:x-dunst-stack-tag:$msgTag "Volume Muted" -t 750
+else
+  # Show the volume notification
+  dunstify -a "changeVolume" -u low -i audio-volume-high -h string:x-dunst-stack-tag:$msgTag \
+  -h int:value:"$vol" "Volume = ${vol}%" -t 850
+fi
