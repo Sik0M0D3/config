@@ -5,7 +5,9 @@
 
 S='sudo'
 
-alias XX='exit'
+alias ZZ='exit'
+alias lw='wl *'
+alias df='df -h'
 alias cl='clear'
 alias wl='wc -l'
 alias rm='rm -v'
@@ -13,18 +15,19 @@ alias mv='mv -vi'
 alias cp='cp -vi'
 alias ls='ls --color=auto'
 alias ll='exa -laagF --color-scale --sort=type'
-
 alias nv="$S nvim"
-alias nvz='nv ~/.zshrc'
-alias nvb='nv ~/.bashrc'
-alias nvp='nv ~/.profile'
-alias nvx='nv ~/.xinitrc'
-alias nbp='nv ~/.bash_profile'
-alias nva='nv ~/.config/alacritty'
-alias nvs='nv ~/.local/bin/autostart'
+alias nvz='nvim ~/.zshrc'
+alias nvb='nvim ~/.bashrc'
+alias nvc='nvim ~/.config'
+alias nvp='nvim ~/.profile'
+alias nvx='nvim ~/.xinitrc'
+alias nvs='nvim ~/.local/bin'
+alias nbp='nvim ~/.bash_profile'
+alias nva='nvim ~/.config/alacritty'
 alias nvd='cd ~/.local/src/dwm/ && nvim config.def.h && suc'
-
 alias bat='bat -f'
+alias aur="$S aura"
+alias neo='fastfetch'
 alias dsh="$S du -sh"
 alias suc='c-c && suk'
 alias p-1='patch -p1 <'
@@ -34,9 +37,12 @@ alias res='chmod go-rwx'
 alias man='PAGER=most man'
 alias own="cho $USER:$USER"
 alias s.b='source ~/.bashrc'
+alias mxs='res * && chm 0500 *'
+alias pur='pac -Syu && aur -Su'
 alias suk="$S make clean install"
+alias mak="make && $S make install"
+alias puc='pac -Syu && aur -Su && pacleanup'
 alias c-c="$S cp config.def.h -R config.h -vi"
-
 alias grep='grep --color=auto'
 alias chmod='chmod -c'
 alias chown='chown -c'
@@ -44,18 +50,14 @@ alias mkdir='mkdir -vp'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias nv.al="$EDITOR ~/.config/.aliases"
-
-alias seepix='sxiv ~/Pix &'
+alias bakwm="cp *.c *.h *.1 *.mk Makefile -R baks/"
+alias ubakwm="cp baks/* -R ."
 alias x-wset='xwallpaper --zoom'
 alias visudo="$S EDITOR=nvim visudo"
-alias seebacks='sxiv /usr/share/backgrounds/* &'
-
-#readable output
-alias df='df -h'
 
 #keyboard
-alias give-me-qwerty-latam="$S localectl set-x11-keymap latam"
 alias give-me-qwerty-us="$S localectl set-x11-keymap us"
+alias give-me-qwerty-latam="$S localectl set-x11-keymap latam"
 
 #pacman unlock
 alias rmpacmanlock="$S rm /var/lib/pacman/db.lck"
@@ -87,7 +89,7 @@ alias psa="ps auxf"
 alias psgrep="ps aux | grep -v grep | grep -i -e VSZ -e"
 
 #grub update
-alias edg='nv /etc/default/grub'
+##alias edg='nv /etc/default/grub'
 alias upg="$S grub-mkconfig -o /boot/grub/grub.cfg"
 
 #add new fonts
@@ -180,7 +182,7 @@ alias probe="$S -E hw-probe -all -upload"
 alias sysfailed="systemctl list-units --failed"
 
 #update betterlockscreen images
-alias bls="betterlockscreen -u /usr/share/backgrounds/arcolinux/"
+#alias bls="betterlockscreen -u /usr/share/backgrounds/arcolinux/"
 
 #give the list of all installed desktops - xsessions desktops
 alias xd="ls /usr/share/xsessions"
