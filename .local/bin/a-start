@@ -1,0 +1,13 @@
+#!/bin/sh
+sleep 1 # Wait 1 sec just in case.
+
+# Autostart background programs if dwm is running.
+if (pidof dwm); then
+  gammastep -x -m randr && gammastep -O 4000 -m randr # Clean old screen temp and Set new to 4000.
+  xwallpaper --zoom ~/Pix/6ozkzl.jpg  # Set wallpaper with xwallpaper tool.
+  (pidof sxhkd) || sxhkd &  # Run keybindings daemon if not running.
+  (pidof picom) || picom &  # Run compositor if not running.
+  (pidof dwmblocks) || dwmblocks &  # Run statusbar if not running.
+  (pidof dunst) || dunst &  # Run notifications daemon if not running.
+  notify-running &  # Run script to notify started programs state.
+fi
