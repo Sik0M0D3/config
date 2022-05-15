@@ -1,0 +1,8 @@
+#!/bin/sh
+# This script is to run One-Shot programs with no persistance.
+
+# Check running processes and kill 'em all.
+(pidof picom) && kill $(pidof picom)
+(pidof dwmblocks) && kill $(pidof dwmblocks)
+(pidof dunst) && kill $(pidof dunst)
+(pidof sxhkd) && kill $(pidof sxhkd)
