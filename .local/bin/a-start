@@ -6,7 +6,7 @@ function run {
   fi
 }
 
-# Autostart background.
+# Autostart background programs.
 # First run one-shot non-persistent programs.
 gammastep -x -m randr && gammastep -O 4000 -m randr # Clean old screen temp and Set new to 4000.
 xwallpaper --zoom ~/Pix/3zzx8y.png  # Set wallpaper with xwallpaper tool.
