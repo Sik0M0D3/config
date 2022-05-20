@@ -1,6 +1,6 @@
 #!/bin/sh
-# If (Process ID OF "program" AND notify program is on) OR notify program is off ;<-EOL, wait 1 sec.
-(pidof dunst) && notify-send -t 5000 "Dunst is On" || exit 0;  sleep 1
-(pidof sxhkd) && notify-send -t 5000 "Sxhkd is On" || notify-send -t 5000 "Sxhkd is Off";  sleep 1
-(pidof picom) && notify-send -t 5000 "Picom is On" || notify-send -t 5000 "Picom is Off";  sleep 1
-(pidof dwmblocks) && notify-send -t 5000 "Dwmblocks is On" || notify-send -t 5000 "Dwmblocks is Off"
+alias nts='notify-send -t 5000'
+(pidof dunst) > /dev/null && nts "Dunst On" || exit 0
+(pidof sxhkd) > /dev/null && nts "Sxhkd On" || nts "Sxhkd Off"
+(pidof picom) > /dev/null && nts "Picom On" || nts "Picom Off"
+(pidof dwmblocks) > /dev/null && nts "Dwmblocks On" || nts "Dwmblocks Off"
