@@ -1,0 +1,19 @@
+#!/bin/sh
+sleep 1 # Wait 1 sec just in case.
+function run {
+  if ! pidof $1 ;then
+    $@&
+  fi
+}
+
+# Autostart background.
+# First run one-shot non-persistent programs.
+gammastep -x -m randr && gammastep -O 4000 -m randr # Clean old screen temp and Set new to 4000.
+xwallpaper --zoom ~/Pix/3zzx8y.png  # Set wallpaper with xwallpaper tool.
+
+# Then check and run if not running persistent background programs.
+picom & # If not running run picom compositor.
+run dunst & # If not running run dunst notification daemon.
+run sxhkd & # If not running run sxhkd keybindings daemon.
+run dwmblocks & # If not running run dwmblocks statusbar.
+run notify-running &  # And at last notify programs state.
