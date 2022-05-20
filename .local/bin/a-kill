@@ -1,5 +1,4 @@
 #!/bin/sh
-# This script is to run One-Shot programs with no persistance.
 
 # Check running processes and kill 'em all.
 (pidof picom) && kill $(pidof picom)
