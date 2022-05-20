@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# include current theme if found
+[ -f ~/.local/bin/cur_theme ] && . ~/.local/bin/cur_theme
+
 # https://github.com/pystardust/waldl
 # script to find and download wallpapers from wallhaven
 version="0.0.1"
@@ -36,9 +39,7 @@ atleast=1920x1080
 
 # the menu command used when no query is provided
 sh_menu () {
-	: | dmenu -p "Search Wallhaven:" -fn "JetBrains Mono:size=14" -x "600" -y "300" -z "720"
-  # ROFI: comment the previous line and uncomment the next line for rofi
-	# rofi -dmenu -l 0 -p "search wallpapers"
+	: | dmenu -p "Search Wallhaven:" -fn "JetBrains Mono:size=14" -x "600" -y "300" -z "720" -nb $black -nf $red -sb $red -sf $black
 }
 
 ##########################
