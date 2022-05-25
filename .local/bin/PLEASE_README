@@ -1,24 +1,21 @@
 BAR AND SCRIPTS THEME:
 
 All the scripts that have color variables are: sb-clock, sb-network, sb-volume and waldl.
-
-They all require a symlink to a theme in "bar_themes/" so that they can reference a specific color e.g: "$green"
-You can choose to make your own theme file or use the default ones i have in this repo it doesn't matter.
+They all require a symlink to a theme in "bar_themes/" so that they can reference specific colors e.g: "$green"
+You can choose to make your own theme file or use the default ones that i have in this repo it doesn't matter.
 
 Use the "ln" command to make the symlink like this e.g:
-  "ln -s  bar_themes/'x_theme'  cur_theme"  <- this 'cur_theme' is the name of the symlink.
+  "ln -s bar_themes/'x_theme' file_name"  <-  this "file_name" is where you define the name of the your symlink.
 
-All of the scripts before mentioned reference a file with the name 'cur_theme' at their beginning:
-
-  "[ -r ~/.local/bin/cur_theme ] && . ~/.local/bin/cur_theme" || exit <- this line.
-  The exit command at the EOF is to avoid running the script if 'cur_theme' it's unreadable or there's none.
-
+All of the scripts before mentioned reference a file with the name "cur_theme" at their beginning:
+  "[ -r ~/.local/bin/cur_theme ] && . ~/.local/bin/cur_theme" || exit
+  The exit command at the EOF is to exit the script(s) if "cur_theme" isn't found or it's unreadable.
 
 So if you want to use another name for the symlink you can :D but you'll have to edit all of the scripts D:
-to match that particular name instead 'cur_theme' or else the scripts WILL NOT RUN!!!
+to match that particular name instead "cur_theme" or else the scripts WILL NOT RUN!!!
 
-I do this to simplify the process of changing the themes of all scripts by only deleting the current symlink
-and creating another one with the same name pointing to the theme file in "bar_themes/".
+I do this to easily change the themes of all scripts by only deleting the current symlink and
+creating another one with the same name pointing to a different theme in "bar_themes/".
 
 Symlink and CMD e.g:
   "ln -s  bar_themes/nord  cur_theme" <- This will give you a symlink that points to "bar_themes/nord".
