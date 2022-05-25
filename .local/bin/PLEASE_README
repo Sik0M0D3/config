@@ -3,19 +3,21 @@ All of the scripts that have color variables are: "sb-clock", "sb-network", "sb-
 They all require a symlink to a theme in "bar_themes/" so that they can reference a specific color's value.
 You can choose to make your own themes or use the default ones that i have in this repo (it doesn't matter).
 
-TO MAKE A SYMBOLIC-LINK FILE:
+TO CREATE A SYMBOLIC-LINK:
 Use the "ln" command like this e.g:
   "ln -s bar_themes/'x_theme' file_name"  <-  this "file_name" is where you define the name of the symlink.
 
 IF YOU DON'T HAVE A SYMLINK:
-All of the scripts before mentioned reference the file with the name "cur_theme" at their beginning:
+All of the scripts before mentioned won't be able of running because they all reference in a line the file
+with the name "cur_theme" (i.e. the symlink) at their beginning:
+                      "Here ↓ "                 "And here ↓ "
   "[ -r ~/.local/bin/cur_theme ] && . ~/.local/bin/cur_theme" || exit   <-  THIS LINE!!!
   The exit CMD at the EotL is to exit the script(s) if "cur_theme" isn't found or isn't readable.
   This is to avoid bugging dwm's bar when running dwmblocks if there's no color values to be displayed.
 
 IF YOU WANT TO USE A DIFFERENT NAME FOR THE SYMLINK:
-So if you want to use another name for the symlink you can :D but you'll have to edit all of the scripts D:
-to match that particular name instead of "cur_theme" or else the scripts WILL NOT RUN!!!
+You can :D but you'll have to edit all of the previously mentioned scripts D: to match that particular name
+instead of "cur_theme" or else the scripts WILL NOT RUN!!!
 
 WHY ALL OF THIS?:
 I do this to easily change the themes of all scripts by only deleting the current symlink
