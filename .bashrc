@@ -4,10 +4,11 @@ export VISUAL='nvim'
 export TERMINAL='st'
 export HISTCONTROL=ignoreboth:erasedups
 export LESSHISTFILE="$HOME/.config/lesshst"
-export XCURSOR_THEME='bloom'
 
-[ -f ~/.config/.aliases ] && . ~/.config/.aliases
+# If found and readable include ~/.config/.aliases.
+[ -r ~/.config/.aliases ] && . ~/.config/.aliases
 
+# If not running interactively don't do anything.
 [[ $- != *i* ]] && return
 
 #Ibus settings if you need them
@@ -17,11 +18,9 @@ export XCURSOR_THEME='bloom'
 #export XMODIFIERS=@im=dbus
 #export QT_IM_MODULE=ibus
 
+# Default console prompt.
 PS1=' \u @ \w
  \$ > '
-
-# If not running interactively, don't do anything
-
 
 #ignore upper and lowercase when TAB completion
 bind "set completion-ignore-case on"
@@ -62,7 +61,7 @@ ex ()
 }
 
 # reporting tools - install when not installed
-neo
+#neo  # <- This is an alias to fastfetch cmd so fastfetch is required.
 #alsi
 #fetch
 #hfetch
