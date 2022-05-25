@@ -1,4 +1,0 @@
-#!/bin/sh
-kill $(pidof picom) || exec picom &
-(pidof dunst) || exit
-(pidof picom) && notify-send -t 750 "Picom On" || notify-send -t 750 "Picom Off"
