@@ -1,7 +1,7 @@
 BAR AND SCRIPTS THEME:
 All of the scripts that have color variables are: "sb-clock", "sb-network", "sb-volume" and "waldl".
 They all require a symlink to a theme in "bar_themes/" so that they can reference a specific color's value.
-You can choose to make your own theme file or use the default ones that i have in this repo (it doesn't matter).
+You can choose to make your own theme or use the default ones that i have in this repo (it doesn't matter).
 
 Use the "ln" command to make a symlink like this e.g:
   "ln -s bar_themes/'x_theme' file_name"  <-  this "file_name" is where you define the name of the symlink.
