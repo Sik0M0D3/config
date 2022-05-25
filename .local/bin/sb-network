@@ -1,6 +1,6 @@
 #!/bin/sh
 # This are 2 scripts merged into 1, the original ones are in Luke Smith's github.
-# Read the PLEASE_README file to know what this line below is for.
+# Read the PLEASE_README file to know what this ↓ line below is for.
 [ -r ~/.local/bin/cur_theme ] && . ~/.local/bin/cur_theme
 
 case $BLOCK_BUTTON in
