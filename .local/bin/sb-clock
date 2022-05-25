@@ -1,5 +1,5 @@
 #!/bin/sh
-[ -f ~/.local/bin/cur_theme ] && . ~/.local/bin/cur_theme
+[ -f ~/.local/bin/cur_theme ] && . ~/.local/bin/cur_theme # Read to PLEASE_README to know what this is for.
 
 clock=$(date '+%I')
 
