@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # include current theme if found
-[ -f ~/.local/bin/cur_theme ] && . ~/.local/bin/cur_theme
+[ -f ~/.local/bin/cur_theme ] && . ~/.local/bin/cur_theme || exit
 
 # https://github.com/pystardust/waldl
 # script to find and download wallpapers from wallhaven
@@ -23,7 +23,7 @@ walldir="$HOME/Pix"
 # the dir used to cache thumbnails
 cachedir="$HOME/.cache/wallhaven"
 # sxiv options
-sxiv_otps=" -tfpo -z 200" # o is needed for selection
+sxiv_otps=" -tpo -z 200" # o is needed for selection
 # number of pages to show in search results
 # each page contains 24 results
 max_pages=4
@@ -39,7 +39,7 @@ atleast=1920x1080
 
 # the menu command used when no query is provided
 sh_menu () {
-	: | dmenu -p "Search Wallhaven:" -fn "JetBrains Mono:size=14" -x "600" -y "300" -z "720" -nb $black -nf $red -sb $red -sf $black
+	: | dmenu -p "Search Wallhaven:" -fn "JetBrains Mono:size=14" -nb $black -nf $red -sb $red -sf $black -b
 }
 
 ##########################
