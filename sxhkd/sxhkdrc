@@ -12,7 +12,7 @@ super + h
 
 #Reload Keybindings daemon (sxhkd)
 ctrl + alt + k
-    pkill -USR1 -x sxhkd
+    pkill -USR1 -x sxhkd && (pidof sxhkd) > /dev/null && notify-send -t 2000 "Sxhkd Reloaded"
 
 #Toggle Notifications daemon (dunst)
 ctrl + alt + n
@@ -32,15 +32,15 @@ ctrl + alt + s
 
 #Raises volume
 XF86AudioRaiseVolume
-    pamixer -i 5 && kill -44 $(pidof dwmblocks) && $( (pidof dunst) && notify-vol || exit 0)
+    pamixer -i 5 && kill -44 $(pidof dwmblocks) && $( (pidof dunst) > /dev/null && notify-volume || exit)
 
 #Lowers volume
 XF86AudioLowerVolume
-    pamixer -d 5 && kill -44 $(pidof dwmblocks) && $( (pidof dunst) && notify-vol || exit 0)
+    pamixer -d 5 && kill -44 $(pidof dwmblocks) && $( (pidof dunst) > /dev/null && notify-volume || exit)
 
 #Mute
 XF86AudioMute
-    pamixer -t && kill -44 $(pidof dwmblocks) && $( (pidof dunst) && notify-vol || exit 0)
+    pamixer -t && kill -44 $(pidof dwmblocks) && $( (pidof dunst) > /dev/null && notify-volume || exit)
 
 #Playerctl works for Pragha, Spotify and others
 #Delete the line for playerctl if you want to use mpc
