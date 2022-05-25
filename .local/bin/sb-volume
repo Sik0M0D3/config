@@ -1,5 +1,6 @@
 #!/bin/sh
-[ -f ~/.local/bin/cur_theme ] && . ~/.local/bin/cur_theme # Read to PLEASE_README to know what this is for.
+# Read the PLEASE_README file to know what this line below is for.
+[ -r ~/.local/bin/cur_theme ] && . ~/.local/bin/cur_theme
 
 case $BLOCK_BUTTON in
     1) setsid -f st -e pulsemixer ;;
