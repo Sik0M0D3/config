@@ -1,14 +1,19 @@
-BAR AND SCRIPTS THEME:
+IMPORTANT BAR AND SCRIPTS THEMES INFO:
 All of the scripts that have color variables are: "sb-clock", "sb-network", "sb-volume" and "waldl".
 They all require a symlink to a theme in "bar_themes/" so that they can reference a specific color's value.
 You can choose to make your own themes or use the default ones that i have in this repo (it doesn't matter).
 
-Use the "ln" command to make a symlink like this e.g:
+TO MAKE A SYMBOLIC-LINK FILE:
+Use the "ln" command like this e.g:
   "ln -s bar_themes/'x_theme' file_name"  <-  this "file_name" is where you define the name of the symlink.
 
+IF YOU DON'T HAVE A SYMLINK:
 All of the scripts before mentioned reference the file with the name "cur_theme" at their beginning:
-  "[ -r ~/.local/bin/cur_theme ] && . ~/.local/bin/cur_theme" || exit <<< THIS LINE!
-  The exit at the end of line is to exit the script(s) if "cur_theme" isn't found or if it's unreadable.
+  "[ -r ~/.local/bin/cur_theme ] && . ~/.local/bin/cur_theme" || exit   <-  THIS LINE!!!
+
+The exit CMD at the EotL is to exit the script(s) if "cur_theme" isn't found or isn't readable.
+So don't run dwmblocks if you remove the exit CMD and don't have a symlink because dwm's bar will get bugged
+and you'll have to quit or reset dwm and run it without running dwmblocks.
 
 So if you want to use another name for the symlink you can :D but you'll have to edit all of the scripts D:
 to match that particular name instead of "cur_theme" or else the scripts WILL NOT RUN!!!
