@@ -1,24 +1,12 @@
-#################################################################
-# KEYBOARD BINDINGS FOR ANY TWM
-#################################################################
+#################################
+# KEYBOARD BINDINGS FOR ANY TWM #
+#################################
 
-#Rofi
-#super + shift + p
-#    rofi -show drun
-
-#Rofi theme selector
-#ctrl + alt + p
-#    rofi-theme-selector
-
-#Browser
-#super + w
-#    io.gitlab.librewolf-community
-
-#Waldl
+#Waldl is a script to search and download wallpapers from wallhaven.cc
 ctrl + alt + w
     waldl
 
-#Htop
+#Htop spawn on st
 super + h
     st -e htop
 
@@ -26,9 +14,9 @@ super + h
 ctrl + alt + k
     pkill -USR1 -x sxhkd
 
-#Toggle Notification daemon (dunst)
+#Toggle Notifications daemon (dunst)
 ctrl + alt + n
-    kill $(pidof dunst) || dunst &
+    toggle-dunst
 
 #Toggle Compositor (picom)
 ctrl + alt + c
@@ -38,9 +26,9 @@ ctrl + alt + c
 ctrl + alt + s
     toggle-dwmblocks
 
-#################################################################
-#     MULTIMEDIA KEYS
-#################################################################
+#################################
+#       MULTIMEDIA KEYS         #
+#################################
 
 #Raises volume
 XF86AudioRaiseVolume
