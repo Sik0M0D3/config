@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# Define dwm as desktop session.
+export XDG_SESSION_DESKTOP='dwm'
+export XDG_CURRENT_DESKTOP='dwm'
+
 # Autostart background programs with this script.
 a-start &
 
