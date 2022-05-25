@@ -1,7 +1,6 @@
 #!/bin/sh
-
-# include current theme if found
-[ -f ~/.local/bin/cur_theme ] && . ~/.local/bin/cur_theme || exit
+# Read the PLEASE_README file to know what this ↓ line below is for.
+[ -r ~/.local/bin/cur_theme ] && . ~/.local/bin/cur_theme || exit
 
 # https://github.com/pystardust/waldl
 # script to find and download wallpapers from wallhaven
