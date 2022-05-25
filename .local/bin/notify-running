@@ -1,5 +1,5 @@
 #!/bin/sh
-alias nts='notify-send -t 5000'
+alias nts='notify-send -t 3000'
 (pidof dunst) > /dev/null && nts "Dunst On" || exit 0
 (pidof sxhkd) > /dev/null && nts "Sxhkd On" || nts "Sxhkd Off"
 (pidof picom) > /dev/null && nts "Picom On" || nts "Picom Off"
