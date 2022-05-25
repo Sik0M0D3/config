@@ -1,7 +1,7 @@
 All of the scripts that have color variables are:
   sb-clock,
   sb-network,
-  sb-volume,
+  sb-volume and
   waldl
 
 They all require a symlink to a theme file in "bar_themes/", you can make your own or use the default ones
