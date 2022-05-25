@@ -1,6 +1,7 @@
 #!/bin/sh
-# This is 2 scripts merged into 1, original ones are in Luke Smith's github.
-[ -r ~/.local/bin/cur_theme ] && . ~/.local/bin/cur_theme # Read to PLEASE_README to know what this is for.
+# This are 2 scripts merged into 1, the original ones are in Luke Smith's github.
+# Read the PLEASE_README file to know what this line below is for.
+[ -r ~/.local/bin/cur_theme ] && . ~/.local/bin/cur_theme
 
 case $BLOCK_BUTTON in
     1) setsid -f st -e bmon; kill -38 $(pidof dwmblocks) ;;
@@ -33,6 +34,7 @@ update() {
 rx=$(update /sys/class/net/[ew]*/statistics/rx_bytes)
 tx=$(update /sys/class/net/[ew]*/statistics/tx_bytes)
 
+# The 4 lines below i did myself, feel free to suggest changes.
 [ -r ~/.cache/netstate ] || (cat /sys/class/net/e*/operstate > ~/.cache/netstate)
 ( (pidof dunst) > /dev/null ) \
   && [ "$(cat ~/.cache/netstate)" != "$(cat /sys/class/net/en*/operstate)" ] \
