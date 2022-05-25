@@ -1,0 +1,6 @@
+#!/bin/sh
+(pidof dunst) > /dev/null \
+  && notify-send -t 750 "Dunst Off" \
+  && sleep 1 && kill $(pidof dunst) && exit
+exec dunst &
+(pidof dunst) > /dev/null && notify-send -t 750 "Dunst On"
