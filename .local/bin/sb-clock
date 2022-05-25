@@ -1,5 +1,5 @@
 #!/bin/sh
-# Read the PLEASE_README file to know what the line below is for.
+# Read the PLEASE_README file to know what this ↓ line below is for.
 [ -r ~/.local/bin/cur_theme ] && . ~/.local/bin/cur_theme || exit
 
 clock=$(date '+%I')
