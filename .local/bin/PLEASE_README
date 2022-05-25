@@ -1,15 +1,15 @@
 BAR AND SCRIPTS THEME:
 
 All the scripts that have color variables are: sb-clock, sb-network, sb-volume and waldl.
-They all require a symlink to a theme in "bar_themes/" so that they can reference specific colors e.g: "$green"
+They all require a symlink to a theme in "bar_themes/" so that they can reference a specific color.
 You can choose to make your own theme file or use the default ones that i have in this repo it doesn't matter.
 
-Use the "ln" command to make the symlink like this e.g:
-  "ln -s bar_themes/'x_theme' file_name"  <-  this "file_name" is where you define the name of the your symlink.
+Use the "ln" command to make a symlink like this e.g:
+  "ln -s bar_themes/'x_theme' file_name"  <-  this "file_name" is where you define the name of the symlink.
 
-All of the scripts before mentioned reference a file with the name "cur_theme" at their beginning:
-  "[ -r ~/.local/bin/cur_theme ] && . ~/.local/bin/cur_theme" || exit
-  The exit command at the EOF is to exit the script(s) if "cur_theme" isn't found or it's unreadable.
+All of the scripts before mentioned reference the file with the name "cur_theme" at their beginning:
+  "[ -r ~/.local/bin/cur_theme ] && . ~/.local/bin/cur_theme" || exit <- this line.
+  The exit at the end of line is to exit the script(s) if "cur_theme" isn't found or if it's unreadable.
 
 So if you want to use another name for the symlink you can :D but you'll have to edit all of the scripts D:
 to match that particular name instead "cur_theme" or else the scripts WILL NOT RUN!!!
@@ -19,3 +19,4 @@ creating another one with the same name pointing to a different theme in "bar_th
 
 Symlink and CMD e.g:
   "ln -s  bar_themes/nord  cur_theme" <- This will give you a symlink that points to "bar_themes/nord".
+
