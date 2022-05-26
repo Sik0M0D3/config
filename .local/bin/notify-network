@@ -1,0 +1,4 @@
+#!/bin/sh
+[ "$(cat /sys/class/net/en*/operstate)" = "up" ] && notify-send -t 3000 "Network Connected" \
+  || notify-send -t 2000 "Network Disconnected"
+cat /sys/class/net/en*/operstate > ~/.cache/netstate
