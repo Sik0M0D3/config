@@ -1,6 +1,7 @@
-#!/bin/sh
-alias nts='notify-send -t 3000'
-(pidof dunst) > /dev/null && nts "Dunst On" || exit 0
+#!/bin/dash
+sleep 1 # Wait 1 sec just in case.
+alias nts='notify-send -t 3000' # Alias to shorten the statements.
+(pidof dunst) > /dev/null && nts "Dunst On" || exit 0 # If no notifications daemon exit.
 (pidof sxhkd) > /dev/null && nts "Sxhkd On" || nts "Sxhkd Off"
 (pidof picom) > /dev/null && nts "Picom On" || nts "Picom Off"
 (pidof dwmblocks) > /dev/null && nts "Dwmblocks On" || nts "Dwmblocks Off"
