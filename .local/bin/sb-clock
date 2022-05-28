@@ -36,7 +36,7 @@ esac
 case $BLOCK_BUTTON in
   1) notify-send -t 6000 "      The date now is $(date "+%A %d
         %B Of %Y At $clock $icon %p")" ;;
-  3) notify-send " Time/date module
+  3) notify-send "󰸘 Time/date module
 - Left Click to update the date (if old).
 - Right Click to show this Message.
 - Left Click + Shift to edit this Script." ;;
