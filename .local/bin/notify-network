@@ -1,5 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 netstatus=$(cat /sys/class/net/en*/operstate)
-[ $netstatus = up ] \
-  && notify-send -t 2000 "Network Connected" || notify-send -t 2000 "Network Disconnected"
+[ $netstatus = up ] && notify-send -t 2000 "Network Connected" || notify-send -t 2000 "Network Disconnected"
 echo $netstatus > ~/.cache/netstate
