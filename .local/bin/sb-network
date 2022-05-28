@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 # This are 2 scripts merged into 1, the original ones are in Luke Smith's github.
 # Read the PLEASE_README file to know what this ↓ line below is for.
 [ -r ~/.local/bin/cur_theme ] && . ~/.local/bin/cur_theme || exit
@@ -19,27 +19,28 @@ case $BLOCK_BUTTON in
     6) setsid -f st -e nvim "$0" ;;
 esac
 
-update() {
-  sum=0
-  for arg; do
-    read -r i < "$arg"
-    sum=$(( sum + i ))
-  done
-  cache=${XDG_CACHE_HOME:-$HOME/.cache}/${1##*/}
-  [ -f "$cache" ] && read -r old < "$cache" || old=0
-  printf %d\\n "$sum" > "$cache"
-  printf %d\\n $(( sum - old ))
-}
+# The 3 lines below i did myself, feel free to suggest changes.
+netstatus=$(cat /sys/class/net/en*/operstate)
+[ -r ~/.cache/netstate ] || echo $netstatus > ~/.cache/netstate
+(pidof dunst) > /dev/null && [ $netstatus != $(cat ~/.cache/netstate) ] && notify-network &
 
-rx=$(update /sys/class/net/[ew]*/statistics/rx_bytes)
-tx=$(update /sys/class/net/[ew]*/statistics/tx_bytes)
-
-# The 4 lines below i did myself, feel free to suggest changes.
-[ -r ~/.cache/netstate ] || (cat /sys/class/net/e*/operstate > ~/.cache/netstate)
-( (pidof dunst) > /dev/null ) \
-  && [ "$(cat ~/.cache/netstate)" != "$(cat /sys/class/net/en*/operstate)" ] \
-  && notify-network & # <-- This script notifies network connection changes.
-
-printf "^c$blue^󰶡 %4siBs ^c$red^󰶣 %4siBs %s%s%s \n" $(numfmt --to=iec $rx $tx) \
-  "$(sed "s/down/^d^ 󰈀 ^d^/;s/up/^c$green^ 󰈀 ^d^/" /sys/class/net/e*/operstate 2>/dev/null)" \
-  "$(sed "s/.*/^c$yellow^ 󰒃 ^d^/" /sys/class/net/tun*/operstate 2>/dev/null)"
+if [ $netstatus != up ]; then
+  printf "^d^ 󰈀  ^d^\n"
+else
+  update() {
+    sum=0
+    for arg; do
+      read -r i < "$arg"
+      sum=$(( sum + i ))
+    done
+    cache=${XDG_CACHE_HOME:-$HOME/.cache}/${1##*/}
+    [ -f "$cache" ] && read -r old < "$cache" || old=0
+    printf %d\\n "$sum" > "$cache"
+    printf %d\\n $(( sum - old ))
+  }
+  rx=$(update /sys/class/net/[ew]*/statistics/rx_bytes)
+  tx=$(update /sys/class/net/[ew]*/statistics/tx_bytes)
+  printf "^c$blue^󰶡 %4siBs ^c$red^󰶣 %4siBs %s%s \n" $(numfmt --to=iec $rx $tx) \
+    "$(sed "s/up/^c#ffffff^ 󰈀 ^d^/" /sys/class/net/e*/operstate 2> /dev/null)" \
+    "$(sed "s/.*/^c$yellow^ 󰒃 ^d^/" /sys/class/net/tun*/operstate 2> /dev/null)"
+fi
