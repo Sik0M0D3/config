@@ -1,5 +1,4 @@
-#!/bin/sh
-
+#!/bin/dash
 # Check running processes and kill 'em all.
 (pidof picom) && kill $(pidof picom)
 (pidof dwmblocks) && kill $(pidof dwmblocks)
