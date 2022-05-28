@@ -1,3 +1,5 @@
+WITHOUT A SYMLINK WITH THE NAME "cur_theme" DWM WILL CRASH!!!
+
 IMPORTANT BAR AND SCRIPTS THEMES INFO:
 All of the scripts that have color variables are: "sb-clock", "sb-network", "sb-volume" and "waldl".
 They all require a symlink to a theme in "bar_themes/" so that they can reference a specific color's value.
