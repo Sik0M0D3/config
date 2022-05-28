@@ -1,6 +1,6 @@
 #!/bin/sh
 # Read the PLEASE_README file to know what this ↓ line below is for.
-[ -r ~/.local/bin/cur_theme ] && . ~/.local/bin/cur_theme
+[ -r ~/.local/bin/cur_theme ] && . ~/.local/bin/cur_theme || exit
 
 case $BLOCK_BUTTON in
     1) setsid -f st -e pulsemixer ;;
