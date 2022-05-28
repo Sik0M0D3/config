@@ -1,5 +1,4 @@
-#!/bin/sh
-sleep 1 # Wait 1 sec just in case.
+#!/bin/dash
 function run {
   if ! pidof $1 ;then
     $@&
