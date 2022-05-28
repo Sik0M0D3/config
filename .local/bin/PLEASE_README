@@ -1,4 +1,4 @@
-WITHOUT A SYMLINK WITH THE NAME "cur_theme" DWM WILL CRASH!!!
+WITHOUT A SYMLINK WITH THE NAME "cur_theme" POINTING TO A THEME DMWBLOCKS WILL CRASH DWM!!!
 
 IMPORTANT BAR AND SCRIPTS THEMES INFO:
 All of the scripts that have color variables are: "sb-clock", "sb-network", "sb-volume" and "waldl".
