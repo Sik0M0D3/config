@@ -41,6 +41,6 @@ else
   rx=$(update /sys/class/net/[ew]*/statistics/rx_bytes)
   tx=$(update /sys/class/net/[ew]*/statistics/tx_bytes)
   printf "^c$blue^󰶡 %4siBs ^c$red^󰶣 %4siBs %s%s \n" $(numfmt --to=iec $rx $tx) \
-    "$(sed "s/up/^c#ffffff^ 󰈀 ^d^/" /sys/class/net/e*/operstate 2> /dev/null)" \
+    "$(sed "s/up/^c$green^ 󰈀 ^d^/" /sys/class/net/e*/operstate 2> /dev/null)" \
     "$(sed "s/.*/^c$yellow^ 󰒃 ^d^/" /sys/class/net/tun*/operstate 2> /dev/null)"
 fi
