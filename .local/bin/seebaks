@@ -1,2 +1,2 @@
-#!/bin/sh
+#!/bin/dash
 sxiv /usr/share/backgrounds/* &
