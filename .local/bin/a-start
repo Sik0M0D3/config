@@ -5,13 +5,15 @@ function run {
   fi
 }
 
-# Autostart background programs.
+# Autostart Programs.
 # First run one-shot non-persistent programs.
-gammastep -x -m randr && gammastep -O 4000 -m randr # Clean old screen temp and Set new to 4000.
-xwallpaper --zoom ~/Pix/y8o51x.jpg  # Set wallpaper with xwallpaper tool. To have this wallpaper u should search
-                                                                     # it on wallhaven or git clone my Pix repo.
-# Then check and run if not running persistent background programs.
-picom & # If not running run picom compositor.
+gammastep -x -m randr # Clean old screen temperature.
+gammastep -O 4000 -m randr # Set screen temperature to 4000.
+xwallpaper --zoom ~/Pix/y8o51x.jpg  # Set wallpaper with xwallpaper tool.
+# To the get the wallpapers u should search them on wallhaven or git clone my Pix repo.
+
+# Then check and run if not running persistent background programs and run them.
+picom & # Picom will not run if its already running so it doesn't need to be checked.
 run dunst & # If not running run dunst notification daemon.
 run sxhkd & # If not running run sxhkd keybindings daemon.
 run dwmblocks & # If not running run dwmblocks statusbar.
