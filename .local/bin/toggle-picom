@@ -2,5 +2,4 @@
 kill $(pidof picom) || exec picom &
 (pidof dunst) > /dev/null || exit
 (pidof picom) > /dev/null \
-  && notify-send -t 750 "Picom On" \
-  || notify-send -t 750 "Picom Off"
+  && notify-send -t 750 "Picom On" || notify-send -t 750 "Picom Off"
