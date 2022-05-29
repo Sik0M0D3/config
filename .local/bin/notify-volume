@@ -9,11 +9,9 @@ vol="$(pamixer --get-volume)"
 mute="$(pamixer --get-mute)"
 if [ "$vol" = "0" ]; then
   dunstify -a "changeVolume" -u low -i audio-volume-muted -h string:x-dunst-stack-tag:$msgTag "Volume Silent" -t 750
-elif  [ $mute = "true" ]; then
-  # Show the sound muted notification
+elif  [ $mute = "true" ]; then  # Show the sound muted notification
   dunstify -a "changeVolume" -u low -i audio-volume-muted -h string:x-dunst-stack-tag:$msgTag "Volume Muted" -t 750
-else
-  # Show the volume notification
+else  # Show the volume notification
   dunstify -a "changeVolume" -u low -i audio-volume-high -h string:x-dunst-stack-tag:$msgTag \
   -h int:value:"$vol" "Volume = ${vol}%" -t 850
 fi
