@@ -1,5 +1,5 @@
 #!/bin/dash
-# Autostart Programs.
+# Autostart background programs.
 function run {  # < Function to run programs if not running already.
   if ! pidof $1 > /dev/null ;then
     $@&
@@ -7,15 +7,13 @@ function run {  # < Function to run programs if not running already.
 }
 
 # First run one-shot non-persistent programs.
-gammastep -x -m randr # Clean old screen temperature.
-gammastep -O 4000 -m randr # Set screen temperature to 4000.
+gammastep -x -m randr && gammastep -O 4000 -m randr # Clear old and set screen temperature to 4000.
 xwallpaper --zoom ~/Pix/y8o51x.jpg  # Set wallpaper with xwallpaper tool.
-# To the get the wallpapers u should search them on wallhaven or git clone my Pix repo.
+# To the get the wallpapers u should search'em on wallhaven or git clone my Pix repo.
 
 # Then run persistent background programs.
 run picom & # If not running run picom compositor.
 run dunst & # If not running run dunst notification daemon.
 run sxhkd & # If not running run sxhkd keybindings daemon.
 run dwmblocks & # If not running run dwmblocks statusbar.
-
-notify-running &  # And at last notify programs state.
+notify-running &  # Notify which programs are running.
