@@ -1,0 +1,45 @@
+#!/bin/dash
+# This are 2 scripts merged into 1, the original ones are in Luke Smith's github.
+# Read the PLEASE_README file to know what this ↓ line below is for.
+[ -r ~/.local/bin/cur_theme ] && . ~/.local/bin/cur_theme || exit
+
+case $BLOCK_BUTTON in
+  1) pidof dunst > /dev/null && notify-send "󰖟 -------- Nerwork Module -------- 󰖟
+- Left Click to show this Message.
+- Wheel Click to view the Network Traffic.
+- Right Click to edit Network Connections.
+- Left Click + Shift to edit this Script.
+    Internet Download Speed/RX  󰜮
+    Internet Upload Speed/TX    󰜷
+    Internet Connected(Green)   󰖟
+    Internet Disconnected(Gray) 󰖟
+    VPN is Active               󰒃" ;;
+  2) setsid -f st -e bmon; kill -40 $(pidof dwmblocks) ;;
+  3) setsid -f st -e nmtui; kill -40 $(pidof dwmblocks) ;;
+  6) setsid -f st -e nvim "$0" ;;
+esac
+
+netstatus=$(cat /sys/class/net/en*/operstate)
+[ ! -r ~/.cache/netstate ] && echo $netstatus > ~/.cache/netstate
+pidof dunst > /dev/null && [ $netstatus != $(cat ~/.cache/netstate) ] && notify-network &
+
+if [ $netstatus != up ]; then
+  printf "^d^󰖟^d^"
+else
+  update() {
+    sum=0
+    for arg; do
+      read -r i < "$arg"
+      sum=$(( sum + i ))
+    done
+    cache=${XDG_CACHE_HOME:-$HOME/.cache}/${1##*/}
+    [ -f "$cache" ] && read -r old < "$cache" || old=0
+    printf %d\\n "$sum" > "$cache"
+    printf %d\\n $(( sum - old ))
+  }
+  rx=$(update /sys/class/net/[ew]*/statistics/rx_bytes)
+  tx=$(update /sys/class/net/[ew]*/statistics/tx_bytes)
+  printf "^c$orange^󰜮 %4siB's ^c$red^󰜷 %4siB's^d^ %s%s" $(numfmt --to=iec $rx $tx) \
+    "$(sed "s/up/^c$green^󰖟^d^/" /sys/class/net/e*/operstate 2> /dev/null)" \
+    "$(sed "s/.*/^c$yellow^󰒃^d^/" /sys/class/net/tun*/operstate 2> /dev/null)"
+fi
