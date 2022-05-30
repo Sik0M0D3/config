@@ -1,5 +1,4 @@
-#!/bin/sh
-(pidof dunst) > /dev/null && notify-send -t 750 "Dunst Off" \
-  && sleep 1 && kill $(pidof dunst) && exit
+#!/bin/dash
+dunstpid=$(pidof dunst) && notify-send -t 750 "Dunst Off" && sleep 1 && kill $dunstpid && exit
 exec dunst &
-(pidof dunst) > /dev/null && notify-send -t 750 "Dunst On"
+notify-send -t 750 "Dunst On"
