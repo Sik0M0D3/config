@@ -1,4 +1,3 @@
 #!/bin/dash
-# Display a bar toggle notification running this script.
-(pidof dunst) > /dev/null && notify-send -t 2000 "Bar Toggled!
+pidof dunst > /dev/null && notify-send -t 2000 "Bar Toggled!
 Press 'Win + b' to Toggle On/Off"
