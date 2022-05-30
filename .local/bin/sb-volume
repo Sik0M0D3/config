@@ -3,7 +3,7 @@
 [ -r ~/.local/bin/cur_theme ] && . ~/.local/bin/cur_theme || exit
 
 case $BLOCK_BUTTON in
-    1) (pidof dunst) > /dev/null && notify-send "󰕾 Volume module
+    1) pidof dunst > /dev/null && notify-send "󰕾 Volume module
 - Left Click to show this message.
 - Scroll to change the volume.
 - Wheel Click to toggle Mute 󰖁.
