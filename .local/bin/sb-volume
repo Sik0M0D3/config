@@ -3,21 +3,20 @@
 [ -r ~/.local/bin/cur_theme ] && . ~/.local/bin/cur_theme || exit
 
 case $BLOCK_BUTTON in
-    1) setsid -f st -e pulsemixer ;;
-    2) pamixer -t && $( (pidof dunst) && notify-volume || exit) ;;
-    3) notify-send "󰕾 Volume module
-- Scroll to change volume.
-- Left Click to open Mixer.
+    1) (pidof dunst) > /dev/null && notify-send "󰕾 Volume module
+- Left Click to show this message.
+- Scroll to change the volume.
 - Wheel Click to toggle Mute 󰖁.
-- Right Click display this message.
-- Left Click + Shift to Edit this Module.
-- Right Click + Shift to open Qpwgraph." ;;
+- Right Click to open the audio Mixer.
+- Left Click + Shift to Edit this Module." ;;
+    2) pamixer -t ;;
+    3) setsid -f st -e pulsemixer ;;
     4) pamixer -i 1 ;;
     5) pamixer -d 1 ;;
     6) st -e nvim "$0" ;;
 esac
 
-[ $(pamixer --get-mute) = true ] && echo ' 󰖁 mute ' && exit
+[ $(pamixer --get-mute) = true ] && echo '󰖁 mute' && exit
 vol="$(pamixer --get-volume)"
 
 if [ "$vol" -eq 100 ]; then
@@ -32,7 +31,7 @@ elif [ "$vol" -ge "10" ]; then
   icon="^c$green^󰖀 ^d^0^c$green^"
 elif [ "$vol" -gt "0" ]; then
   icon="^c$green^󰕿 ^d^00^c$green^"
-else echo ' 󰝟 000% ' && $( (pidof dunst) && notify-volume || exit) && exit
+else echo '󰝟 000%' && exit
 fi
 
-printf " ^c$gray2^$icon$vol^d^%% \n"
+printf "^c$gray2^$icon$vol^d^%%"
