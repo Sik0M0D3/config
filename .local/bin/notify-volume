@@ -1,5 +1,5 @@
 #!/bin/dash
-(pidof dunst) > /dev/null || exit
+pidof dunst > /dev/null || exit
 
 # Arbitrary but unique message tag
 msgTag="myvolume"
