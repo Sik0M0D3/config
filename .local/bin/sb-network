@@ -8,7 +8,7 @@ case $BLOCK_BUTTON in
 - Left Click to show this Message.
 - Wheel Click to view the Network Traffic.
 - Right Click to edit Network Connections.
-- Left Click + Shift to edit this Script.
+- Left Click + Shift to edit this Module.
     Internet Download Speed/RX  󰜮
     Internet Upload Speed/TX    󰜷
     Internet Connected(Green)   󰖟
