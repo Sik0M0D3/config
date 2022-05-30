@@ -1,2 +1,2 @@
 #!/bin/dash
-kill $(pidof picom dunst sxhkd dwmblocks) # Kill any running predefined processes' pids.
+kill $(pidof picom dunst sxhkd dwmblocks) # Kill any running programs' pids.
