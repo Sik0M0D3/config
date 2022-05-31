@@ -80,7 +80,6 @@ alias userlist="cut -d: -f1 /etc/passwd"
 #merge new settings
 alias merge="xrdb -merge ~/.Xresources"
 
-
 #ps
 alias psa="ps auxf"
 alias psgrep="ps aux | grep -v grep | grep -i -e VSZ -e"
