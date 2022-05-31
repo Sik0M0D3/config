@@ -1,7 +1,0 @@
-#!/bin/dash
-pidof dunst > /dev/null || exit || sleep 1  # If dunst isn't running exit the script else wait 1 sec.
-alias nts='notify-send -t 4000' # Alias to shorten the notify commands.
-notify-send -t 4000 "Dunst On"  # If the script still runs then dunst is On so notify.
-pidof sxhkd > /dev/null && nts "Sxhkd On" || nts "Sxhkd Off"
-pidof picom > /dev/null && nts "Picom On" || nts "Picom Off"
-pidof dwmblocks > /dev/null && nts "Dwmblocks On" || nts "Dwmblocks Off"
