@@ -4,7 +4,7 @@
 [ -r ~/.local/bin/cur_theme ] && . ~/.local/bin/cur_theme || exit
 
 case $BLOCK_BUTTON in
-  1) pidof dunst > /dev/null && notify-send "󰖟 -------- Nerwork Module -------- 󰖟
+  1) pidof dunst > /dev/null && notify-send -t 5000 "󰖟 -------- Nerwork Module -------- 󰖟
 - Left Click to show this Message.
 - Wheel Click to view the Network Traffic.
 - Right Click to edit Network Connections.
@@ -13,15 +13,16 @@ case $BLOCK_BUTTON in
     Internet Upload Speed/TX    󰜷
     Internet Connected(Green)   󰞉
     Internet Disconnected(Gray) 󰪎
-    VPN is Active               󰒃" ;;
+    VPN is Active               󰒃" && notify-network & ;;
   2) setsid -f st -e bmon; kill -40 $(pidof dwmblocks) ;;
   3) setsid -f st -e nmtui; kill -40 $(pidof dwmblocks) ;;
   6) setsid -f st -e nvim "$0" ;;
 esac
 
-netstatus=$(cat /sys/class/net/en*/operstate)
-[ ! -r ~/.cache/netstate ] && echo $netstatus > ~/.cache/netstate
-pidof dunst > /dev/null && [ $netstatus != $(cat ~/.cache/netstate) ] && notify-network &
+netstate=$(cat /sys/class/net/en*/operstate)
+[ ! -r ~/.cache/lastnetstate ] && echo $netstate > ~/.cache/lastnetstate &
+pidof dunst > /dev/null && [ $netstate != $(cat ~/.cache/lastnetstate) ] \
+  && echo $netstate > ~/.cache/lastnetstate && notify-network &
 
 if [ $netstatus != up ]; then
   printf "^d^󰪎^d^"
