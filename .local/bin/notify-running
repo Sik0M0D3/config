@@ -1,0 +1,10 @@
+#!/bin/dash
+pidof dunst > /dev/null || exit # If dunst isn't running exit the script else asume its On.
+pidof sxhkd > /dev/null && sxhkdstatus=On || sxhkdstatus=Off
+pidof picom > /dev/null && picomstatus=On || picomstatus=Off
+pidof dwmblocks > /dev/null && blocksstatus=On || blocksstatus=Off
+notify-send -t 5000 "Programs' Status:
+  Dunst is On
+  Sxhkd is $sxhkdstatus
+  Picom is $picomstatus
+  Dwmblocks is $blocksstatus"
