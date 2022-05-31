@@ -19,6 +19,7 @@ nvtop
 pipewire
 pipewire-pulse
 pulsemixer
+steam
 sxhkd
 sxiv
 thunar
@@ -26,7 +27,6 @@ ttf-baekmuk
 ttf-fantasque-sans-mono
 ttf-hanazono
 ttf-hannom
-ttf-iosevka
 ttf-jetbrains-mono
 ttf-sazanami
 ufw
