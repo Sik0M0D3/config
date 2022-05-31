@@ -11,8 +11,8 @@ case $BLOCK_BUTTON in
 - Left Click + Shift to edit this Module.
     Internet Download Speed/RX  󰜮
     Internet Upload Speed/TX    󰜷
-    Internet Connected(Green)   󰖟
-    Internet Disconnected(Gray) 󰖟
+    Internet Connected(Green)   󰞉
+    Internet Disconnected(Gray) 󰪎
     VPN is Active               󰒃" ;;
   2) setsid -f st -e bmon; kill -40 $(pidof dwmblocks) ;;
   3) setsid -f st -e nmtui; kill -40 $(pidof dwmblocks) ;;
@@ -24,7 +24,7 @@ netstatus=$(cat /sys/class/net/en*/operstate)
 pidof dunst > /dev/null && [ $netstatus != $(cat ~/.cache/netstate) ] && notify-network &
 
 if [ $netstatus != up ]; then
-  printf "^d^󰖟^d^"
+  printf "^d^󰪎^d^"
 else
   update() {
     sum=0
@@ -40,6 +40,6 @@ else
   rx=$(update /sys/class/net/[ew]*/statistics/rx_bytes)
   tx=$(update /sys/class/net/[ew]*/statistics/tx_bytes)
   printf "^c$orange^󰜮 %4sB's ^c$red^󰜷 %4sB's^d^ %s%s" $(numfmt --to=iec $rx $tx) \
-    "$(sed "s/up/^c$green^󰖟^d^/" /sys/class/net/e*/operstate 2> /dev/null)" \
+    "$(sed "s/up/^c$green^󰞉^d^/" /sys/class/net/e*/operstate 2> /dev/null)" \
     "$(sed "s/.*/^c$yellow^󰒃^d^/" /sys/class/net/tun*/operstate 2> /dev/null)"
 fi
