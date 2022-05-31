@@ -4,18 +4,18 @@
 [ -r ~/.local/bin/cur_theme ] && . ~/.local/bin/cur_theme || exit
 
 case $BLOCK_BUTTON in
-  1) pidof dunst > /dev/null && notify-send -t 5000 "󰖟 -------- Nerwork Module -------- 󰖟
-- Left Click to show this Message.
-- Wheel Click to view the Network Traffic.
-- Right Click to edit Network Connections.
-- Left Click + Shift to edit this Module.
-    Internet Download Speed/RX  󰜮
-    Internet Upload Speed/TX    󰜷
-    Internet Connected(Green)   󰞉
-    Internet Disconnected(Gray) 󰪎
-    VPN is Active               󰒃" && notify-network & ;;
-  2) setsid -f st -e bmon; kill -40 $(pidof dwmblocks) ;;
-  3) setsid -f st -e nmtui; kill -40 $(pidof dwmblocks) ;;
+  1) notify-network & ;;
+  2) setsid -f st -e nmtui; kill -40 $(pidof dwmblocks) ;;
+  3) pidof dunst > /dev/null && notify-send -t 7500 "󰖟 Nerwork Module:
+  • Left Click to Show Network State.
+  • Right Click to Edit the Connections.
+  • Left Click + Shift to edit this Module.
+  • Icon Info:
+        󰜮 Download Speed/RX
+        󰜷 Upload Speed/TX
+        󰞉 Network Connected (Green)
+        󰪎 Network Disconnected (Gray)
+        󰒃 VPN is Active (Yellow)" ;;
   6) setsid -f st -e nvim "$0" ;;
 esac
 
