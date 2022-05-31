@@ -10,6 +10,7 @@ gammastep
 htop
 jq
 libnotify
+libwnck3
 man-db
 man-pages
 most
@@ -20,6 +21,7 @@ nvtop
 pipewire
 pipewire-pulse
 pulsemixer
+python-psutil
 steam
 sxhkd
 sxiv
