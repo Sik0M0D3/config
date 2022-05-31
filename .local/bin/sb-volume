@@ -3,20 +3,20 @@
 [ -r ~/.local/bin/cur_theme ] && . ~/.local/bin/cur_theme || exit
 
 case $BLOCK_BUTTON in
-    1) pidof dunst > /dev/null && notify-send "󰕾 Volume module
-- Left Click to show this message.
-- Scroll to change the volume.
-- Wheel Click to toggle Mute 󰖁.
-- Right Click to open the audio Mixer.
-- Left Click + Shift to Edit this Module." ;;
-    2) pamixer -t ;;
-    3) setsid -f st -e pulsemixer ;;
+    1) pamixer -t && notify-volume ;;
+    2) setsid -f st -e pulsemixer ;;
+    3) pidof dunst > /dev/null && notify-send "󰕾 Volume Module:
+  • Left Click to Mute 󰖁 On/Off.
+  • Wheel Scroll to Change the Volume.
+  • Wheel Click to Open the Audio Mixer.
+  • Right Click to Show this Message.
+  • Left Click + Shift to Edit this Module." ;;
     4) pamixer -i 1 ;;
     5) pamixer -d 1 ;;
     6) st -e nvim "$0" ;;
 esac
 
-[ $(pamixer --get-mute) = true ] && echo '󰖁 mute' && exit
+[ $(pamixer --get-mute) = true ] && echo '󰖁 Mute' && exit
 vol="$(pamixer --get-volume)"
 
 if [ "$vol" -eq 100 ]; then
