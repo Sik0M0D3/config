@@ -20,7 +20,7 @@ case $BLOCK_BUTTON in
 esac
 
 netstate=$(cat /sys/class/net/en*/operstate)
-[ ! -r ~/.cache/netstate ] && echo $netstate > ~/.cache/netstate &
+[ -r ~/.cache/netstate ] || echo $netstate > ~/.cache/netstate &
 pidof dunst > /dev/null && [ $netstate != $(cat ~/.cache/netstate) ] \
   && echo $netstate > ~/.cache/netstate && notify-network &
 
