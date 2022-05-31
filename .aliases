@@ -42,8 +42,7 @@ alias mxs='res * && chm 0500 *'
 alias suk="$S make clean install"
 alias mak="make && $S make install"
 alias c-c="$S cp config.def.h -R config.h -vi"
-alias pur='pac -Syu && aur -Su && flatpak update'
-alias puc='pac -Syu && aur -Su && pacleanup && flatpak update'
+alias pur='pac -Syu && aur -Su'
 alias grep='grep --color=auto'
 alias chmod='chmod -c'
 alias chown='chown -c'
