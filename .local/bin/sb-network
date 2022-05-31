@@ -20,9 +20,9 @@ case $BLOCK_BUTTON in
 esac
 
 netstate=$(cat /sys/class/net/en*/operstate)
-[ ! -r ~/.cache/lastnetstate ] && echo $netstate > ~/.cache/lastnetstate &
-pidof dunst > /dev/null && [ $netstate != $(cat ~/.cache/lastnetstate) ] \
-  && echo $netstate > ~/.cache/lastnetstate && notify-network &
+[ ! -r ~/.cache/netstate ] && echo $netstate > ~/.cache/netstate &
+pidof dunst > /dev/null && [ $netstate != $(cat ~/.cache/netstate) ] \
+  && echo $netstate > ~/.cache/netstate && notify-network &
 
 if [ $netstatus != up ]; then
   printf "^d^󰪎^d^"
