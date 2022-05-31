@@ -1,0 +1,5 @@
+#!/bin/dash
+pidof dunst > /dev/null && notify-send -t 3000 "DWM Layouts:
+  - 󱗼 = Tiled/Master'n'Stack Layout
+  - 󰮐 = Floating Layout
+  - 󰄶 = Monocle Layout"
