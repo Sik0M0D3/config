@@ -41,4 +41,4 @@ case $BLOCK_BUTTON in
   6) setsid -f st -e nvim "$0" ;;
 esac
 
-date "+^c$black^^b$pink^ %R ^d^ ^c$pink^$icon^d^ |"
+date "+^c$black^^b$pink^ %R ^d^ ^c$pink^$icon^d^"
