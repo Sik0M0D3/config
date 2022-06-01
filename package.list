@@ -20,6 +20,7 @@ networkmanager
 nvtop
 pipewire
 pipewire-pulse
+polkit
 pulsemixer
 python-psutil
 steam
