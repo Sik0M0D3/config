@@ -3,9 +3,9 @@
 [ -r ~/.local/bin/cur_theme ] && . ~/.local/bin/cur_theme || exit
 
 case $BLOCK_BUTTON in
-  1) archlinux-logout & ;;
+  2) archlinux-logout & ;;
   3) pidof dunst > /dev/null && notify-send -t 5000 "󰤆  Power Module:
-  • Left Click to Open the Logout Menu.
+  • Wheel Click to Open the Logout Menu.
   • Right Click to Show this Message.
   • Shift + Left Click to Edit this Module." ;;
   6) setsid -f st -e nvim "$0" ;;
